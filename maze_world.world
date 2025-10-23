@@ -10,7 +10,7 @@
       <uri>model://sun</uri>
     </include>
 
-    <!-- Maze walls - 0.5m spacing as per requirements -->
+    <!-- Maze walls -->
     
     <!-- Outer walls -->
     <model name="wall_outer_1">
@@ -93,7 +93,7 @@
       </link>
     </model>
 
-    <!-- Inner maze walls (customize based on your maze design) -->
+    <!-- Inner maze walls -->
     <model name="wall_inner_1">
       <static>true</static>
       <pose>-1.5 0 0.15 0 0 1.5708</pose>
