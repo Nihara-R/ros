@@ -10,11 +10,8 @@ def generate_launch_description():
     pkg_ie4060_asssignment2 = get_package_share_directory('ie4060_asssignment2')
     pkg_nav2_bringup = get_package_share_directory('nav2_bringup')
 
-    # Path to your Nav2 parameters file
     nav2_params_path = os.path.join(pkg_ie4060_asssignment2, 'config', 'nav2_params.yaml')
 
-    # Path to the map file *YOU CREATED WITH SLAM*
-    # IMPORTANT: You must run SLAM first and save your map as 'maps/maze'
     map_file_path = os.path.join(pkg_ie4060_asssignment2, 'maps', 'maze.yaml') 
 
     return LaunchDescription([
@@ -38,4 +35,5 @@ def generate_launch_description():
                 'rviz_config': os.path.join(pkg_nav2_bringup, 'rviz', 'nav2_default_view.rviz')
             }.items(),
         )
+
     ])
