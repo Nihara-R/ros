@@ -1,14 +1,307 @@
-<?xml version="1.0" ?>
-<sdf version="1.6">
-  <world name="default">
-    
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
-    
-    <include>
-      <uri>model://sun</uri>
-    </include>
+# sdf final code
 
-    </world>
+
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="maze">
+    <!-- Maze walls: 6x6 grid (0.5m cell size); wall thickness=0.05m; wall height=0.15m. Model is centered at origin (X=0,Y=0), with wall bases on the floor (Z=0). -->
+    <static>true</static>
+    <link name="maze_walls">
+      <!-- Outer horizontal walls -->
+      <collision name="wall_collision_h_outer_top">
+        <geometry>
+          <box>
+            <size>3.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 1.5 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_outer_top">
+        <geometry>
+          <box>
+            <size>3.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 1.5 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_h_outer_bottom">
+        <geometry>
+          <box>
+            <size>3.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 -1.5 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_outer_bottom">
+        <geometry>
+          <box>
+            <size>3.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 -1.5 0.075 0 0 0</pose>
+      </visual>
+
+      <!-- Outer vertical walls -->
+      <collision name="wall_collision_v_outer_left">
+        <geometry>
+          <box>
+            <size>0.05 3.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.5 0.0 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_outer_left">
+        <geometry>
+          <box>
+            <size>0.05 3.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.5 0.0 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_outer_right">
+        <geometry>
+          <box>
+            <size>0.05 3.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.5 0.0 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_outer_right">
+        <geometry>
+          <box>
+            <size>0.05 3.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.5 0.0 0.075 0 0 0</pose>
+      </visual>
+
+      <!-- Internal horizontal walls -->
+      <collision name="wall_collision_h_-1.00_-1.25">
+        <geometry>
+          <box>
+            <size>0.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.25 -1.0 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_-1.00_-1.25">
+        <geometry>
+          <box>
+            <size>0.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.25 -1.0 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_h_-1.00_0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.25 -1.0 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_-1.00_0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.25 -1.0 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_h_-0.50_-0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.25 -0.5 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_-0.50_-0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.25 -0.5 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_h_0.00_1.00">
+        <geometry>
+          <box>
+            <size>1.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 0.0 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_0.00_1.00">
+        <geometry>
+          <box>
+            <size>1.0 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 0.0 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_h_0.50_0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.25 0.5 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_h_0.50_0.25">
+        <geometry>
+          <box>
+            <size>1.5 0.05 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.25 0.5 0.075 0 0 0</pose>
+      </visual>
+
+      <!-- Internal vertical walls -->
+      <collision name="wall_collision_v_-1.00_0.25">
+        <geometry>
+          <box>
+            <size>0.05 1.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.0 0.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_-1.00_0.25">
+        <geometry>
+          <box>
+            <size>0.05 1.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-1.0 0.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_-0.50_0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.5 0.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_-0.50_0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.5 0.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_-0.50_1.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.5 1.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_-0.50_1.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>-0.5 1.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_0.00_-0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 -0.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_0.00_-0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 -0.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_0.00_0.75">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 0.75 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_0.00_0.75">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.0 0.75 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_0.50_0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.5 0.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_0.50_0.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.5 0.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_0.50_1.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.5 1.25 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_0.50_1.25">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>0.5 1.25 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_1.00_-0.75">
+        <geometry>
+          <box>
+            <size>0.05 1.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 -0.75 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_1.00_-0.75">
+        <geometry>
+          <box>
+            <size>0.05 1.0 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 -0.75 0.075 0 0 0</pose>
+      </visual>
+      <collision name="wall_collision_v_1.00_0.75">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 0.75 0.075 0 0 0</pose>
+      </collision>
+      <visual name="wall_visual_v_1.00_0.75">
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.15</size>
+          </box>
+        </geometry>
+        <pose>1.0 0.75 0.075 0 0 0</pose>
+      </visual>
+    </link>
+  </model>
 </sdf>
